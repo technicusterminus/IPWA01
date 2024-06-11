@@ -3,19 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>CO2 Insight</title>
-    <link  rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+          body {
+            padding-top: 56px; /* Höhe der Navigation, damit der Inhalt darunter nicht verdeckt wird */
+            font-family: 'Playfair Display', serif;
+        }
+        .navbar-nav .nav-link {
+            font-size: 1.25rem; /* Schriftgröße der Navigation */
+            font-weight: 700; /* Fettgedruckt für eine stärkere Präsenz */
+            margin-right: 20px; /* Abstand zwischen den Menüpunkten */
+        }
+        .navbar-brand {
+            font-size: 1.5rem; /* Schriftgröße des Brand-Logos */
+            font-weight: 700; /* Fettgedruckt */
+        }
+        .footer-nav {
+            margin-left: auto; /* Rechtsbündig ausgerichtet */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="img/logo.jpg" alt="CO2 Insight Logo">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.jpg" alt="CO2 Insight Logo" style="width:14%;" class="rounded">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            CO2 Insight
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#about">About</a>
+                            <a class="dropdown-item" href="#faq">FAQ</a>
+                            <a class="dropdown-item" href="#contact">Kontakt</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Projekte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dataAndAnalysis.html">Daten und Analysen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="getInvolved.html">Mitmachen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="materials.html">Ressourcen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
-    <body>
- 
-    </body>
-    <footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+    <main>
+        <div class="container-fluid">
+            <section id="about" class="py-5">
+                <h1>About</h1>
+                <p>Information about CO2 Insight.</p>
+            </section>
 
+            <section id="faq" class="py-5">
+                <h1>FAQ</h1>
+                <p>Frequently Asked Questions.</p>
+            </section>
+
+            <section id="contact" class="py-5">
+                <h1>Kontakt</h1>
+                <p>Contact information.</p>
+            </section>
+        </div>
+    </main>
+    <footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+        <div class="container-fluid d-flex justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="imprint.html">Impressum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="privacy.html">Datenschutzerklärung</a>
+                </li>
+            </ul>
+        </div>
     </footer>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
