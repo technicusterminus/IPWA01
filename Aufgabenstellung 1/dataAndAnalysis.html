@@ -56,6 +56,13 @@
     }
     th, td {
         text-align: center;
+        padding: 2px;
+    }
+    .thHover:hover{
+        cursor: pointer;
+    }
+    .thAlign {
+        justify-content = 100%;
     }
     .search-input {
         width: 100%;
@@ -126,13 +133,18 @@
                     <table class="table table-bordered table-striped" id="emissionsTable">
                         <thead>
                             <tr>
-                                <th>Unternehmen <input type="text" id="companySearch" class="search-input" placeholder="Search for Unternehmen"></th>
-                                <th>Land <input type="text" id="countrySearch" class="search-input" placeholder="Search for Land"></th>
-                                <th>CO2 Emissionen (Tonnen) <input type="text" id="emissionsSearch" class="search-input" placeholder="Search for CO2 Emissionen"></th>
+                                <th><div class="thHover" onclick="sortTable(0)">Unternehmen</div></th>
+                                <th><div class="thHover" onclick="sortTable(1)">Land</div></th>
+                                <th><div class="thAlign">CO<sub>2</sub> Emissionen (to)</div></th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="companySearch" class="search-input" placeholder="Unternehmen"></td>
+                                <td><input type="text" id="countrySearch" class="search-input" placeholder=" Land"></td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <!-- Dynamically generated rows will go here -->
+                            <!-- Dynamisch generierte HTML-Tabellen-Arrays Firma - Land - CO2Ausstoss (to) -->
                         </tbody>
                     </table>
                 </div>
@@ -155,19 +167,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+   
     // Beispielhafte CO2-Daten
     const emissionsData = [
-        { company: "Company A", country: "Deutschland", emissions: 1200 },
-        { company: "Company B", country: "USA", emissions: 3500 },
-        { company: "Company C", country: "China", emissions: 4500 },
-        // Weitere Daten hinzufügen
-        // ...
+        //Leeres Array: Company: Firma; Land: Land; Emissionen: Zufallszahl
     ];
 
     // 200 Einträge generieren
     while (emissionsData.length < 200) {
         let company = "Company " + String.fromCharCode(65 + (emissionsData.length % 26));
-        let country = ["Deutschland", "USA", "China", "Indien", "Brasilien", "Kanada", "Australien"][Math.floor(Math.random() * 7)];
+        let country = ["Deutschland", "USA", "China", "Indien", "Brasilien", "Kanada", "Australien", "The Länd"][Math.floor(Math.random() * 7)];
         let emissions = Math.floor(Math.random() * 5000) + 500; // Zufällige Emissionen zwischen 500 und 5500
         emissionsData.push({ company, country, emissions });
     }
