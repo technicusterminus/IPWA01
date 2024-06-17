@@ -168,7 +168,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
    
-    // Beispielhafte CO2-Daten
+    // CO2-Daten
     const emissionsData = [
         //Leeres Array: Company: Firma; Land: Land; Emissionen: Zufallszahl
     ];
@@ -176,7 +176,7 @@
     // 200 Einträge generieren
     while (emissionsData.length < 200) {
         let company = "Company " + String.fromCharCode(65 + (emissionsData.length % 26));
-        let country = ["Deutschland", "USA", "China", "Indien", "Brasilien", "Kanada", "Australien", "The Länd"][Math.floor(Math.random() * 7)];
+        let country = ["Deutschland", "USA", "China", "Indien", "Brasilien", "Kanada", "Australien", "The Länd"][Math.floor(Math.random() * 8)];
         let emissions = Math.floor(Math.random() * 5000) + 500; // Zufällige Emissionen zwischen 500 und 5500
         emissionsData.push({ company, country, emissions });
     }
@@ -192,10 +192,8 @@
             </tr>`;
             tableBody.innerHTML += row;
         });
-
         document.getElementById('companySearch').addEventListener('keyup', filterTable);
         document.getElementById('countrySearch').addEventListener('keyup', filterTable);
-        document.getElementById('emissionsSearch').addEventListener('keyup', filterTable);
     };
 
     function sanitizeHTML(str) {
@@ -208,8 +206,6 @@
     function filterTable() {
         const companyInput = document.getElementById('companySearch').value.toLowerCase();
         const countryInput = document.getElementById('countrySearch').value.toLowerCase();
-        const emissionsInput = document.getElementById('emissionsSearch').value.toLowerCase();
-
         const rows = document.querySelectorAll('#tableBody tr');
 
         rows.forEach(row => {
@@ -228,7 +224,8 @@
     // Tabellen-Sortierfunktion
     function sortTable(n) {
         const table = document.getElementById("emissionsTable");
-        let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        let rows, switching, i, x, y, shouldSwitch, dir, switchcount;// = 0;
+        switchcount=0;
         switching = true;
         dir = "asc"; 
         while (switching) {
