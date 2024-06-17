@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>CO2 Insight</title>
+    <title>CO2 Insight - Daten und Analysen</title>
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -51,46 +51,93 @@
     .footer-nav {
         margin-left: auto; /* Rechtsbündig ausgerichtet */
     }
+    .table-responsive {
+        margin-top: 20px;
+    }
+    th, td {
+        text-align: center;
+    }
+    .search-input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    @media (max-width: 768px) {
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .search-input {
+            font-size: 0.9rem;
+            padding: 8px;
+        }
+        th, td {
+            font-size: 0.9rem;
+        }
+    }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
                     <img src="img/logo.jpg" alt="CO2 Insight Logo" style="width:14%;" class="rounded">
                 </a>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            CO2 Insight
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="index.html#about">About</a>
-                            <a class="dropdown-item" href="index.html#faq">FAQ</a>
-                            <a class="dropdown-item" href="index.html#contact">Kontakt</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projekte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dataAndAnalysis.html">Daten und Analysen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="getInvolved.html">Mitmachen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="materials.html">Ressourcen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                </ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                CO2 Insight
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="index.html#about">About</a>
+                                <a class="dropdown-item" href="index.html#faq">FAQ</a>
+                                <a class="dropdown-item" href="index.html#contact">Kontakt</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Projekte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dataAndAnalysis.html">Daten und Analysen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="getInvolved.html">Mitmachen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="materials.html">Ressourcen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Blog</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
     <main>
+        <div class="container">
+            <section id="data-analysis" class="section">
+                <h1>CO2 Emissionsdaten</h1>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="emissionsTable">
+                        <thead>
+                            <tr>
+                                <th>Unternehmen <input type="text" id="companySearch" class="search-input" placeholder="Search for Unternehmen"></th>
+                                <th>Land <input type="text" id="countrySearch" class="search-input" placeholder="Search for Land"></th>
+                                <th>CO2 Emissionen (Tonnen) <input type="text" id="emissionsSearch" class="search-input" placeholder="Search for CO2 Emissionen"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Dynamically generated rows will go here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
     </main>
     <footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
         <div class="container-fluid d-flex justify-content-center">
@@ -107,6 +154,105 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    // Beispielhafte CO2-Daten
+    const emissionsData = [
+        { company: "Company A", country: "Deutschland", emissions: 1200 },
+        { company: "Company B", country: "USA", emissions: 3500 },
+        { company: "Company C", country: "China", emissions: 4500 },
+        // Weitere Daten hinzufügen
+        // ...
+    ];
+
+    // 200 Einträge generieren
+    while (emissionsData.length < 200) {
+        let company = "Company " + String.fromCharCode(65 + (emissionsData.length % 26));
+        let country = ["Deutschland", "USA", "China", "Indien", "Brasilien", "Kanada", "Australien"][Math.floor(Math.random() * 7)];
+        let emissions = Math.floor(Math.random() * 5000) + 500; // Zufällige Emissionen zwischen 500 und 5500
+        emissionsData.push({ company, country, emissions });
+    }
+
+    // Tabelle dynamisch füllen
+    window.onload = function() {
+        const tableBody = document.getElementById("tableBody");
+        emissionsData.forEach(data => {
+            let row = `<tr>
+                <td>${sanitizeHTML(data.company)}</td>
+                <td>${sanitizeHTML(data.country)}</td>
+                <td>${sanitizeHTML(data.emissions.toString())}</td>
+            </tr>`;
+            tableBody.innerHTML += row;
+        });
+
+        document.getElementById('companySearch').addEventListener('keyup', filterTable);
+        document.getElementById('countrySearch').addEventListener('keyup', filterTable);
+        document.getElementById('emissionsSearch').addEventListener('keyup', filterTable);
+    };
+
+    function sanitizeHTML(str) {
+        var temp = document.createElement('div');
+        temp.textContent = str;
+        return temp.innerHTML;
+    }
+
+    // Filterfunktion für die Tabelle
+    function filterTable() {
+        const companyInput = document.getElementById('companySearch').value.toLowerCase();
+        const countryInput = document.getElementById('countrySearch').value.toLowerCase();
+        const emissionsInput = document.getElementById('emissionsSearch').value.toLowerCase();
+
+        const rows = document.querySelectorAll('#tableBody tr');
+
+        rows.forEach(row => {
+            const company = row.children[0].textContent.toLowerCase();
+            const country = row.children[1].textContent.toLowerCase();
+            const emissions = row.children[2].textContent.toLowerCase();
+
+            if (company.includes(companyInput) && country.includes(countryInput) && emissions.includes(emissionsInput)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // Tabellen-Sortierfunktion
+    function sortTable(n) {
+        const table = document.getElementById("emissionsTable");
+        let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        switching = true;
+        dir = "asc"; 
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                if (dir === "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir === "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount++; 
+            } else {
+                if (switchcount === 0 && dir === "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+    </script>
 </body>
 </html>
-    
