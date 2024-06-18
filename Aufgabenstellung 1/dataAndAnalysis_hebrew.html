@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    
+    <
     <style>
     /* In eine zentrale CSS auszulagern */
     body {
@@ -126,30 +128,27 @@
         </nav>
     </header>
     <main>
-        <div class="container">
-            <section id="data-analysis" class="section">
-                <h1>CO2 Emissionsdaten</h1>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="emissionsTable">
-                        <thead>
-                            <tr>
-                                <th><div class="thHover" onclick="sortTable(0)">Unternehmen</div></th>
-                                <th><div class="thHover" onclick="sortTable(1)">Land</div></th>
-                                <th><div class="thAlign">CO<sub>2</sub> Emissionen (to)</div></th>
-                            </tr>
-                            <tr>
-                                <td><input type="text" id="companySearch" class="search-input" placeholder="Unternehmen"></td>
-                                <td><input type="text" id="countrySearch" class="search-input" placeholder=" Land"></td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            <!-- Dynamisch generierte HTML-Tabellen-Arrays Firma - Land - CO2Ausstoss (to) -->
-                        </tbody>
-                    </table>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="card card-body">
+                    <input id="search-input" class="form-control" type="text">
                 </div>
-            </section>
+            </div>
         </div>
+       <table class="table table-striped">
+            <tr class="bg-info">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+            <tbody id="myTable">
+               
+            </tbody>    
+       </table>
+
     </main>
     <footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
         <div class="container-fluid d-flex justify-content-center">
@@ -162,104 +161,59 @@
                 </li>
             </ul>
         </div>
-        <a href="dataAndAnalysis_hebrew.html"><img src="img/hebrew.jpg" alt="hebrew"></a>
-        <a href="dataAndAnalysis.html"><img src="img/german.jpg" alt="deutsch"></a>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-    // CO2-Daten
-    const emissionsData = [
-        //Leeres Array: Company: Firma; Land: Land; Emissionen: Zufallszahl
-    ];
+</body>
+<script>
+    var myArray = []
 
-    // 200 Einträge generieren
-    while (emissionsData.length < 200) {
-        let company = "Company " + String.fromCharCode(65 + (emissionsData.length % 26));
-        let country = ["Deutschland", "USA", "China", "Indien", "Brasilien", "Kanada", "Australien", "The Länd"][Math.floor(Math.random() * 8)];
-        let emissions = Math.floor(Math.random() * 5000) + 500; // Zufällige Emissionen zwischen 500 und 5500
-        emissionsData.push({ company, country, emissions });
-    }
-
-    // Tabelle dynamisch füllen
-    window.onload = function() {
-        const tableBody = document.getElementById("tableBody");
-        emissionsData.forEach(data => {
-            let row = `<tr>
-                <td>${sanitizeHTML(data.company)}</td>
-                <td>${sanitizeHTML(data.country)}</td>
-                <td>${sanitizeHTML(data.emissions.toString())}</td>
-            </tr>`;
-            tableBody.innerHTML += row;
+    //JQuery - Ajax Function
+    //That is to say use <script src="https://code.jquery.com/jquery-3.1.1.min.js"> instead of <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+    //https://stackoverflow.com/questions/18271251/typeerror-ajax-is-not-a-function
+    $.ajax({
+        method:'GET',
+        url:'https://reqres.in/api/users',
+        success: function(response){
+            myArray = response.data
+            buildTable(myArray)
+            console.log(myArray)}
         });
-        document.getElementById('companySearch').addEventListener('keyup', filterTable);
-        document.getElementById('countrySearch').addEventListener('keyup', filterTable);
-    };
+    
+        $('#search-input').on('keyup', function(){
+            var value = $(this).val()
+            console.log('Value:',value)
+            var data = searchTable(value, myArray)
+            buildTable(data)
+        })
 
-    function sanitizeHTML(str) {
-        var temp = document.createElement('div');
-        temp.textContent = str;
-        return temp.innerHTML;
-    }
+    function searchTable(value, data){
+        var filteredData = []
 
-    // Filterfunktion für die Tabelle
-    function filterTable() {
-        const companyInput = document.getElementById('companySearch').value.toLowerCase();
-        const countryInput = document.getElementById('countrySearch').value.toLowerCase();
-        const rows = document.querySelectorAll('#tableBody tr');
+        for (var i = 0; i < data.length; i++){
+            value = value.toLowerCase()
+            var name = data[i].first_name.toLowerCase()
 
-        rows.forEach(row => {
-            const company = row.children[0].textContent.toLowerCase();
-            const country = row.children[1].textContent.toLowerCase();
-            const emissions = row.children[2].textContent.toLowerCase();
-
-            if (company.includes(companyInput) && country.includes(countryInput) && emissions.includes(emissionsInput)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-
-    // Tabellen-Sortierfunktion
-    function sortTable(n) {
-        const table = document.getElementById("emissionsTable");
-        let rows, switching, i, x, y, shouldSwitch, dir, switchcount;// = 0;
-        switchcount=0;
-        switching = true;
-        dir = "asc"; 
-        while (switching) {
-            switching = false;
-            rows = table.rows;
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                x = rows[i].getElementsByTagName("TD")[n];
-                y = rows[i + 1].getElementsByTagName("TD")[n];
-                if (dir === "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else if (dir === "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-                switchcount++; 
-            } else {
-                if (switchcount === 0 && dir === "asc") {
-                    dir = "desc";
-                    switching = true;
-                }
+            if(name.includes(value)){
+                filteredData.push(data[i])
             }
         }
+
+        return filteredData  
     }
-    </script>
-</body>
+
+    function buildTable(data){
+        var table = document.getElementById('myTable')
+        table.innerHTML = ''
+        for (var i = 0; i < data.length; i++){
+            var row = `<tr>
+							<td>${data[i].first_name}</td>
+							<td>${data[i].last_name}</td>
+							<td>${data[i].email}</td>
+					  </tr>`
+			table.innerHTML += row
+        }
+    }
+</script>
 </html>
