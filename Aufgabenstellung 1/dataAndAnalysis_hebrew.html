@@ -140,9 +140,9 @@
         </div>
        <table class="table table-striped">
             <tr class="bg-info">
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
+                <th data-column="country" data-order="desc">First Name</th>
+                <th data-column="enterprise" data-order="desc">Last Name</th>
+                <th data-column="emissions" data-order="desc">Email</th>
             </tr>
             <tbody id="myTable">
                
@@ -172,7 +172,14 @@
     //JQuery - Ajax Function
     //That is to say use <script src="https://code.jquery.com/jquery-3.1.1.min.js"> instead of <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
     //https://stackoverflow.com/questions/18271251/typeerror-ajax-is-not-a-function
+    data/oil-and-gas-production-and-transport_emissions_sources.csv
     $.ajax({
+        url:'data/oil-and-gas-production-and-transport_emissions_sources.csv',
+        dataType:'Text',
+    }).done(function(data){
+        
+    })
+    /*    $.ajax({
         method:'GET',
         url:'https://reqres.in/api/users',
         success: function(response){
@@ -180,7 +187,7 @@
             buildTable(myArray)
             console.log(myArray)}
         });
-    
+   
         $('#search-input').on('keyup', function(){
             var value = $(this).val()
             console.log('Value:',value)
@@ -201,12 +208,35 @@
         }
 
         return filteredData  
-    }
+    }*/
+//https://climatetrace.org/data
+    $('th').on('click', function(){
+        var column = $(this).data('column')
+        var order = $(this).data('order')
+        var text = $(this).html()
+        text = text.substring(0, text.length - 1)
+        console.log('Column was clicked.', column, order)
 
+        if(order == 'desc'){
+            $(this).data('order', "asc")
+            //sort method: Array wird gelooped - wie bubble sort
+            myArray = myArray.sort((a,b) => a[column] > b[column] ? 1 : -1)
+            text += '&#9660'
+        }else{
+            $(this).data('order', "desc")
+            myArray = myArray.sort((a,b) => a[column] < b[column] ? 1 : -1)
+            text += '&#9660'
+        }
+        $(this).html(text)
+        buildTable(myArray)
+    })
+
+
+    buildTable(myArray)
     function buildTable(data){
         var table = document.getElementById('myTable')
         table.innerHTML = ''
-        for (var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++){ 
             var row = `<tr>
 							<td>${data[i].first_name}</td>
 							<td>${data[i].last_name}</td>
