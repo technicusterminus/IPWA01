@@ -138,6 +138,7 @@
                 </div>
             </div>
         </div>
+        <input type="file" id="file">
        <table class="table table-striped">
             <tr class="bg-info">
                 <th data-column="country" data-order="desc">First Name</th>
@@ -148,7 +149,18 @@
                
             </tbody>    
        </table>
-
+       <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Land</th>
+                    <th>Unternehmen</th>
+                    <th>Emissionen</th>
+                </tr>
+            </thead>
+            <tbody id="data-output">
+                <!---Populated by JavaScript-->
+            </tbody>
+       </table>
     </main>
     <footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
         <div class="container-fluid d-flex justify-content-center">
@@ -167,6 +179,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 <script>
+fetch('data/oil_gas_emissions.json')
+.then(function(response){
+    return response.json();
+})
+.then(function(oil_gas_emissions){
+    let placeholder = document.querySelector('#data-output');
+    let out = '';
+    for (let info of oil_gas_emissions){
+        out += `
+            <tr>
+                <td>${info.iso3_country}</td>
+                <td>${info.source_name}</td>
+                <td>${info.emissions_quantity}</td>
+            </tr>
+        `;
+    }
+    placeholder.innerHTML = out;
+})
+
+
+
+
+
     var myArray = []
 
     //JQuery - Ajax Function
@@ -177,7 +212,7 @@
         url:'data/oil-and-gas-production-and-transport_emissions_sources.csv',
         dataType:'Text',
     }).done(function(data){
-        
+
     })
     /*    $.ajax({
         method:'GET',
