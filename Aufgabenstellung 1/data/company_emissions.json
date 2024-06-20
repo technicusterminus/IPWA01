@@ -1,0 +1,492 @@
+[
+  {
+      "firma": "Volkswagen",
+      "land": "Deutschland",
+      "co2_emissionen": 10000.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 304174,
+          "branche": "Automobil",
+          "umsatz": 252634000000
+      }
+  },
+  {
+      "firma": "ExxonMobil",
+      "land": "USA",
+      "co2_emissionen": 12300.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 74000,
+          "branche": "Energie",
+          "umsatz": 290212000000
+      }
+  },
+  {
+      "firma": "Toyota",
+      "land": "Japan",
+      "co2_emissionen": 9500.2,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 359542,
+          "branche": "Automobil",
+          "umsatz": 275288000000
+      }
+  },
+  {
+      "firma": "Royal Dutch Shell",
+      "land": "Niederlande",
+      "co2_emissionen": 14000.8,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 87000,
+          "branche": "Energie",
+          "umsatz": 345528000000
+      }
+  },
+  {
+      "firma": "Apple",
+      "land": "USA",
+      "co2_emissionen": 950.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 147000,
+          "branche": "Technologie",
+          "umsatz": 365817000000
+      }
+  },
+  {
+      "firma": "Microsoft",
+      "land": "USA",
+      "co2_emissionen": 760.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 163000,
+          "branche": "Technologie",
+          "umsatz": 168088000000
+      }
+  },
+  {
+      "firma": "Amazon",
+      "land": "USA",
+      "co2_emissionen": 4400.3,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 1350000,
+          "branche": "Einzelhandel",
+          "umsatz": 469822000000
+      }
+  },
+  {
+      "firma": "BP",
+      "land": "Großbritannien",
+      "co2_emissionen": 15000.0,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 70000,
+          "branche": "Energie",
+          "umsatz": 164195000000
+      }
+  },
+  {
+      "firma": "Chevron",
+      "land": "USA",
+      "co2_emissionen": 12500.4,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 47736,
+          "branche": "Energie",
+          "umsatz": 162465000000
+      }
+  },
+  {
+      "firma": "Samsung",
+      "land": "Südkorea",
+      "co2_emissionen": 7200.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 287439,
+          "branche": "Technologie",
+          "umsatz": 211940000000
+      }
+  },
+  {
+      "firma": "Honda",
+      "land": "Japan",
+      "co2_emissionen": 5400.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 215638,
+          "branche": "Automobil",
+          "umsatz": 137349000000
+      }
+  },
+  {
+      "firma": "Nestle",
+      "land": "Schweiz",
+      "co2_emissionen": 3400.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 273000,
+          "branche": "Lebensmittel",
+          "umsatz": 94732000000
+      }
+  },
+  {
+      "firma": "Siemens",
+      "land": "Deutschland",
+      "co2_emissionen": 2300.4,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 303000,
+          "branche": "Industrie",
+          "umsatz": 94000000000
+      }
+  },
+  {
+      "firma": "General Electric",
+      "land": "USA",
+      "co2_emissionen": 4100.8,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 205000,
+          "branche": "Industrie",
+          "umsatz": 79619000000
+      }
+  },
+  {
+      "firma": "PepsiCo",
+      "land": "USA",
+      "co2_emissionen": 2000.3,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 291000,
+          "branche": "Lebensmittel",
+          "umsatz": 79240000000
+      }
+  },
+  {
+      "firma": "Johnson & Johnson",
+      "land": "USA",
+      "co2_emissionen": 1800.9,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 134500,
+          "branche": "Gesundheitswesen",
+          "umsatz": 93775000000
+      }
+  },
+  {
+      "firma": "Procter & Gamble",
+      "land": "USA",
+      "co2_emissionen": 2500.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 99000,
+          "branche": "Konsumgüter",
+          "umsatz": 76900000000
+      }
+  },
+  {
+      "firma": "Unilever",
+      "land": "Niederlande",
+      "co2_emissionen": 3000.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 149000,
+          "branche": "Konsumgüter",
+          "umsatz": 58183000000
+      }
+  },
+  {
+      "firma": "Sony",
+      "land": "Japan",
+      "co2_emissionen": 3500.4,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 111700,
+          "branche": "Technologie",
+          "umsatz": 82688000000
+      }
+  },
+  {
+      "firma": "Ford",
+      "land": "USA",
+      "co2_emissionen": 5000.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 182000,
+          "branche": "Automobil",
+          "umsatz": 136341000000
+      }
+  },
+  {
+      "firma": "Coca-Cola",
+      "land": "USA",
+      "co2_emissionen": 2700.8,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 86200,
+          "branche": "Lebensmittel",
+          "umsatz": 37266000000
+      }
+  },
+  {
+      "firma": "Pfizer",
+      "land": "USA",
+      "co2_emissionen": 2200.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 78000,
+          "branche": "Gesundheitswesen",
+          "umsatz": 81490000000
+      }
+  },
+  {
+      "firma": "Intel",
+      "land": "USA",
+      "co2_emissionen": 3200.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 121100,
+          "branche": "Technologie",
+          "umsatz": 77390000000
+      }
+  },
+  {
+      "firma": "Merck & Co.",
+      "land": "USA",
+      "co2_emissionen": 1900.4,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 74000,
+          "branche": "Gesundheitswesen",
+          "umsatz": 47230000000
+      }
+  },
+  {
+      "firma": "Novartis",
+      "land": "Schweiz",
+      "co2_emissionen": 2100.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 108514,
+          "branche": "Gesundheitswesen",
+          "umsatz": 51430000000
+      }
+  },
+  {
+      "firma": "GlaxoSmithKline",
+      "land": "Großbritannien",
+      "co2_emissionen": 2300.9,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 94000,
+          "branche": "Gesundheitswesen",
+          "umsatz": 46270000000
+      }
+  },
+  {
+      "firma": "Boeing",
+      "land": "USA",
+      "co2_emissionen": 3300.2,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 141000,
+          "branche": "Luftfahrt",
+          "umsatz": 58280000000
+      }
+  },
+  {
+      "firma": "Airbus",
+      "land": "Frankreich",
+      "co2_emissionen": 3100.4,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 133782,
+          "branche": "Luftfahrt",
+          "umsatz": 49680000000
+      }
+  },
+  {
+      "firma": "TotalEnergies",
+      "land": "Frankreich",
+      "co2_emissionen": 14500.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 107776,
+          "branche": "Energie",
+          "umsatz": 205800000000
+      }
+  },
+  {
+      "firma": "AT&T",
+      "land": "USA",
+      "co2_emissionen": 2600.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 230000,
+          "branche": "Kommunikation",
+          "umsatz": 171760000000
+      }
+  },
+  {
+      "firma": "Verizon",
+      "land": "USA",
+      "co2_emissionen": 2400.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 132200,
+          "branche": "Kommunikation",
+          "umsatz": 128290000000
+      }
+  },
+  {
+      "firma": "Comcast",
+      "land": "USA",
+      "co2_emissionen": 1800.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 168000,
+          "branche": "Kommunikation",
+          "umsatz": 116390000000
+      }
+  },
+  {
+      "firma": "Walmart",
+      "land": "USA",
+      "co2_emissionen": 8000.9,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 2200000,
+          "branche": "Einzelhandel",
+          "umsatz": 559200000000
+      }
+  },
+  {
+      "firma": "Berkshire Hathaway",
+      "land": "USA",
+      "co2_emissionen": 2700.8,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 360000,
+          "branche": "Finanzen",
+          "umsatz": 245500000000
+      }
+  },
+  {
+      "firma": "JPMorgan Chase",
+      "land": "USA",
+      "co2_emissionen": 1300.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 255351,
+          "branche": "Finanzen",
+          "umsatz": 119540000000
+      }
+  },
+  {
+      "firma": "Bank of America",
+      "land": "USA",
+      "co2_emissionen": 1200.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 210000,
+          "branche": "Finanzen",
+          "umsatz": 93660000000
+      }
+  },
+  {
+      "firma": "Citigroup",
+      "land": "USA",
+      "co2_emissionen": 1100.4,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 204000,
+          "branche": "Finanzen",
+          "umsatz": 74290000000
+      }
+  },
+  {
+      "firma": "Wells Fargo",
+      "land": "USA",
+      "co2_emissionen": 1000.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 268531,
+          "branche": "Finanzen",
+          "umsatz": 72150000000
+      }
+  },
+  {
+      "firma": "Allianz",
+      "land": "Deutschland",
+      "co2_emissionen": 1300.8,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 147000,
+          "branche": "Versicherung",
+          "umsatz": 121000000000
+      }
+  },
+  {
+      "firma": "AXA",
+      "land": "Frankreich",
+      "co2_emissionen": 1400.9,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 153000,
+          "branche": "Versicherung",
+          "umsatz": 113500000000
+      }
+  },
+  {
+      "firma": "Munich Re",
+      "land": "Deutschland",
+      "co2_emissionen": 1500.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 41000,
+          "branche": "Versicherung",
+          "umsatz": 72000000000
+      }
+  },
+  {
+      "firma": "Zurich Insurance",
+      "land": "Schweiz",
+      "co2_emissionen": 1100.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 54000,
+          "branche": "Versicherung",
+          "umsatz": 68000000000
+      }
+  },
+  {
+      "firma": "Huawei",
+      "land": "China",
+      "co2_emissionen": 3000.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 194000,
+          "branche": "Technologie",
+          "umsatz": 136700000000
+      }
+  },
+  {
+      "firma": "China Mobile",
+      "land": "China",
+      "co2_emissionen": 3200.6,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 450000,
+          "branche": "Kommunikation",
+          "umsatz": 116800000000
+      }
+  },
+  {
+      "firma": "Tencent",
+      "land": "China",
+      "co2_emissionen": 2800.4,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 85858,
+          "branche": "Technologie",
+          "umsatz": 73250000000
+      }
+  },
+  {
+      "firma": "Alibaba",
+      "land": "China",
+      "co2_emissionen": 2900.3,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 251462,
+          "branche": "Einzelhandel",
+          "umsatz": 109480000000
+      }
+  },
+  {
+      "firma": "Baidu",
+      "land": "China",
+      "co2_emissionen": 3100.2,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 45000,
+          "branche": "Technologie",
+          "umsatz": 17430000000
+      }
+  },
+  {
+      "firma": "JD.com",
+      "land": "China",
+      "co2_emissionen": 3500.5,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 310000,
+          "branche": "Einzelhandel",
+          "umsatz": 114300000000
+      }
+  },
+  {
+      "firma": "China Petroleum & Chemical",
+      "land": "China",
+      "co2_emissionen": 22000.7,
+      "sonstige_daten": {
+          "mitarbeiteranzahl": 640000,
+          "branche": "Energie",
+          "umsatz": 433000000000
+      }
+  }
+]

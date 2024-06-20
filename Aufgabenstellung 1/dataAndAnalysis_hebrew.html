@@ -60,7 +60,7 @@
         text-align: center;
         padding: 2px;
     }
-    .thHover:hover{
+    th{
         cursor: pointer;
     }
     .thAlign {
@@ -127,38 +127,21 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main class="container-fluid">
         <br>
         <br>
         <br>
-        <div class="row">
-            <div class="col">
-                <div class="card card-body">
-                    <input id="search-input" class="form-control" type="text">
-                </div>
-            </div>
-        </div>
-        <input type="file" id="file">
-       <table class="table table-striped">
-            <tr class="bg-info">
-                <th data-column="country" data-order="desc">First Name</th>
-                <th data-column="enterprise" data-order="desc">Last Name</th>
-                <th data-column="emissions" data-order="desc">Email</th>
-            </tr>
-            <tbody id="myTable">
-               
-            </tbody>    
-       </table>
-       <table class="table table-striped">
+        <input type="text" id="suchFeld" placeholder="Suche: Land oder Unternehmen." class="form-control mb-3">
+       <table class="table table-striped" id='emissionTable'>
             <thead>
                 <tr>
-                    <th>Land</th>
-                    <th>Unternehmen</th>
-                    <th>Emissionen</th>
+                    <th onclick="sortTable(0)">Land</th>
+                    <th onclick="sortTable(1)">Unternehmen</th>
+                    <th onclick>CO<sub>2</sub>Emissionen (to)</th>
                 </tr>
             </thead>
-            <tbody id="data-output">
-                <!---Populated by JavaScript-->
+            <tbody id="emissionTableBody">
+                <!---Dynamische Tabelle aus JSON-Daten-->
             </tbody>
        </table>
     </main>
@@ -166,119 +149,142 @@
         <div class="container-fluid d-flex justify-content-center">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="imprint.html">Impressum</a>
+                    <a class="nav-link" href="imprint_hebrew.html">חוֹתָם</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="privacy.html">Datenschutzerklärung</a>
+                    <a class="nav-link" href="privacy_hebrew.html">הגנת מידע</a>
                 </li>
             </ul>
         </div>
+        <div> <a href="getInvolved_hebrew.html"><img src="img/hebrew.jpg" alt="hebrew"></a>
+        </div>
+        <div>
+            <a href="getInvolved.html"><img src="img/german.jpg" alt="deutsch"></a>
+        </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 <script>
-fetch('data/oil_gas_emissions.json')
-.then(function(response){
-    return response.json();
+
+// Funktion zur Bereinigung der Eingabe, um XSS-Angriffe zu verhindern
+function sanitizeInput(input) {
+    const element = document.createElement('div');
+    element.innerText = input;
+    return element.innerHTML;
+}
+
+//Laden der JSON-Textdatei
+fetch('data/company_emissions.json')
+//Erstellung des JSON-Objektes 
+.then(fetchedData => fetchedData.json())
+.then(data => {
+    buildTable(data);
+    document.getElementById('suchFeld').addEventListener('keyup', function(){
+        const value = this.value.toLowerCase();
+        const filteredData = data.filter(item => 
+            item.firma.toLowerCase().includes(value) ||
+            item.land.toLowerCase().includes(value)
+        );
+        buildTable(filteredData)
+    })
 })
-.then(function(oil_gas_emissions){
-    let placeholder = document.querySelector('#data-output');
-    let out = '';
-    for (let info of oil_gas_emissions){
-        out += `
+
+
+
+
+
+
+
+
+
+        function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("emissionTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc"; 
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /*check if the two rows should switch place,
+            based on the direction, asc or desc:*/
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch= true;
+                break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+                }
+            }
+            if (Number(x.innerHTML) > Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+
+            }
+            if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            //Each time a switch is done, increase this count by 1:
+            switchcount ++;      
+            } else {
+            /*If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again.*/
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+            }
+        } //end of while(switching)
+    }//end of sortTable
+        
+
+function buildTable(data){
+    let table = document.querySelector('#emissionTableBody');
+    let htmlOutput = '';
+    for (let content of data){
+        htmlOutput += `
             <tr>
-                <td>${info.iso3_country}</td>
-                <td>${info.source_name}</td>
-                <td>${info.emissions_quantity}</td>
+                <td>${content.firma}</td>
+                <td>${content.land}</td>
+                <td>${content.co2_emissionen}</td>
             </tr>
         `;
     }
-    placeholder.innerHTML = out;
-})
+    table.innerHTML = htmlOutput;
+}
 
 
-
-
-
-    var myArray = []
-
+    
+    
     //JQuery - Ajax Function
     //That is to say use <script src="https://code.jquery.com/jquery-3.1.1.min.js"> instead of <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
     //https://stackoverflow.com/questions/18271251/typeerror-ajax-is-not-a-function
-    data/oil-and-gas-production-and-transport_emissions_sources.csv
-    $.ajax({
-        url:'data/oil-and-gas-production-and-transport_emissions_sources.csv',
-        dataType:'Text',
-    }).done(function(data){
 
-    })
-    /*    $.ajax({
-        method:'GET',
-        url:'https://reqres.in/api/users',
-        success: function(response){
-            myArray = response.data
-            buildTable(myArray)
-            console.log(myArray)}
-        });
-   
-        $('#search-input').on('keyup', function(){
-            var value = $(this).val()
-            console.log('Value:',value)
-            var data = searchTable(value, myArray)
-            buildTable(data)
-        })
-
-    function searchTable(value, data){
-        var filteredData = []
-
-        for (var i = 0; i < data.length; i++){
-            value = value.toLowerCase()
-            var name = data[i].first_name.toLowerCase()
-
-            if(name.includes(value)){
-                filteredData.push(data[i])
-            }
-        }
-
-        return filteredData  
-    }*/
-//https://climatetrace.org/data
-    $('th').on('click', function(){
-        var column = $(this).data('column')
-        var order = $(this).data('order')
-        var text = $(this).html()
-        text = text.substring(0, text.length - 1)
-        console.log('Column was clicked.', column, order)
-
-        if(order == 'desc'){
-            $(this).data('order', "asc")
-            //sort method: Array wird gelooped - wie bubble sort
-            myArray = myArray.sort((a,b) => a[column] > b[column] ? 1 : -1)
-            text += '&#9660'
-        }else{
-            $(this).data('order', "desc")
-            myArray = myArray.sort((a,b) => a[column] < b[column] ? 1 : -1)
-            text += '&#9660'
-        }
-        $(this).html(text)
-        buildTable(myArray)
-    })
+    
 
 
-    buildTable(myArray)
-    function buildTable(data){
-        var table = document.getElementById('myTable')
-        table.innerHTML = ''
-        for (var i = 0; i < data.length; i++){ 
-            var row = `<tr>
-							<td>${data[i].first_name}</td>
-							<td>${data[i].last_name}</td>
-							<td>${data[i].email}</td>
-					  </tr>`
-			table.innerHTML += row
-        }
-    }
 </script>
 </html>
