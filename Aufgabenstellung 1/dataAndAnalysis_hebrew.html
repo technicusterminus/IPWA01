@@ -6,90 +6,14 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/central.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    
-    <
-    <style>
-    /* In eine zentrale CSS auszulagern */
-    body {
-        padding-top: 56px; /* Höhe der Navigation, damit der Inhalt darunter nicht verdeckt wird */
-        font-family: 'Raleway', sans-serif;
-    }
-    .navbar-nav .nav-link {
-        font-size: 1.25rem; /* Schriftgröße der Navigation */
-        font-weight: 700; /* Fettgedruckt für eine stärkere Präsenz */
-        margin-right: 20px; /* Abstand zwischen den Menüpunkten */
-    }
-    .navbar-brand {
-        font-size: 1.5rem; /* Schriftgröße des Brand-Logos */
-        font-weight: 700; /* Fettgedruckt */
-    }
-    .section {
-        padding: 60px 0;
-        text-align: center;
-    }
-    .section h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
-    .section p {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-    .section ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    .section ul li {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        margin-bottom: 10px;
-    }
-    .section:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    .footer-nav {
-        margin-left: auto; /* Rechtsbündig ausgerichtet */
-    }
-    .table-responsive {
-        margin-top: 20px;
-    }
-    th, td {
-        text-align: center;
-        padding: 2px;
-    }
-    th{
-        cursor: pointer;
-    }
-    .thAlign {
-        justify-content = 100%;
-    }
-    .search-input {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-    }
-    @media (max-width: 768px) {
-        .table-responsive {
-            overflow-x: auto;
-        }
-        .search-input {
-            font-size: 0.9rem;
-            padding: 8px;
-        }
-        th, td {
-            font-size: 0.9rem;
-        }
-    }
-    </style>
 </head>
-<body>
+<body dir="rtl">
     <header>
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index_hebrew.html">
                     <img src="img/logo.jpg" alt="CO2 Insight Logo" style="width:14%;" class="rounded">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,72 +23,81 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                CO2 Insight
+                                CO<sub>2</sub> Insight
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="index.html#about">About</a>
-                                <a class="dropdown-item" href="index.html#faq">FAQ</a>
-                                <a class="dropdown-item" href="index.html#contact">Kontakt</a>
+                                <a class="dropdown-item" href="index_hebrew.html#about">על אודות</a>
+                                <a class="dropdown-item" href="index_hebrew.html#faq">שאלות נפוצות</a>
+                                <a class="dropdown-item" href="index_hebrew.html#contact">איש קשר</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="projects.html">Projekte</a>
+                            <a class="nav-link" href="projects_hebrew.html">פרויקטים</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dataAndAnalysis.html">Daten und Analysen</a>
+                            <a class="nav-link" href="dataAndAnalysis_hebrew.html">נתונים וניתוח</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="getInvolved.html">Mitmachen</a>
+                            <a class="nav-link" href="getInvolved_hebrew.html">לְהִשְׂתַתֵף</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="materials.html">Ressourcen</a>
+                            <a class="nav-link" href="materials_hebrew.html">אֶמְצָעִי</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="partner.html">Partner</a>
+                            <a class="nav-link" href="partner_hebrew.html">בת זוג</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <main class="container-fluid">
-        <br>
-        <br>
-        <br>
-        <input type="text" id="suchFeld" placeholder="Suche: Land oder Unternehmen." class="form-control mb-3">
-       <table class="table table-striped" id='emissionTable'>
-            <thead>
-                <tr>
-                    <th onclick="sortTable(0)">Unternehmen</th>
-                    <th onclick="sortTable(1)">Land</th>
-                    <th onclick>CO<sub>2</sub>Emissionen (to)</th>
-                </tr>
-            </thead>
-            <tbody id="emissionTableBody">
-                <!---Dynamische Tabelle aus JSON-Daten-->
-            </tbody>
-       </table>
-    </main>
-    <footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
-        <div class="container-fluid d-flex justify-content-center">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="imprint_hebrew.html">חוֹתָם</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="privacy_hebrew.html">הגנת מידע</a>
-                </li>
-            </ul>
-        </div>
-        <div> <a href="getInvolved_hebrew.html"><img src="img/hebrew.jpg" alt="hebrew"></a>
-        </div>
-        <div>
-            <a href="getInvolved.html"><img src="img/german.jpg" alt="deutsch"></a>
-        </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <main>
+        <div class="container-fluid">
+            <br>
+            <br>
+            <br>
+            <div class="container">
+                <h2>נתונים וניתוח</h2>
+                    <p>זהו קטע פומבי מתוך הפרויקט שלנו המייצג חברות גדולות יותר. 
+                        מפה עם נתוני CO<sub>2</sub> מקומיים תואמים תתווסף ברגע שצפיפות הנתונים המתאימה תהיה זמינה. 
+                        למרבה הצער, כרגע אין תוכניות להציג נתונים אלו בעברית מסיבות טכניות.
+                    </p>
+            </div>
+            <input type="text" id="suchFeld" placeholder="חיפוש: מדינה או חברה." class="form-control mb-3">
+            <table class="table table-striped" id='emissionTable'>
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">לרדוף</th>
+                        <th onclick="sortTable(1)">מדינה</th>
+                        <th onclick> CO<sub>2 </sub>פליטות (ל)</th>
+                    </tr>
+                </thead>
+                <tbody id="emissionTableBody">
+                    <!---Dynamische Tabelle aus JSON-Daten-->
+                </tbody>
+            </table>
+        </main>
+        <footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+            <div class="container-fluid d-flex justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="imprint_hebrew.html">חוֹתָם</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="privacy_hebrew.html">הגנת מידע</a>
+                    </li>
+                </ul>
+            </div>
+            <div> <a href="dataAndAnalysis_hebrew.html"><img src="img/hebrew.jpg" alt="hebrew"></a>
+            </div>
+            <div>
+                <a href="dataAndAnalysis.html"><img src="img/german.jpg" alt="deutsch"></a>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
 </body>
 <script>
 
@@ -191,75 +124,67 @@ fetch('data/company_emissions.json')
     })
 })
 
+function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("emissionTable");
+    switching = true;
+    //Set the sorting direction to ascending:
+    dir = "asc"; 
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /*check if the two rows should switch place,
+        based on the direction, asc or desc:*/
+        if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch= true;
+            break;
+            }
+        } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+            }
+        }
+        if (Number(x.innerHTML) > Number(y.innerHTML)) {
+    //if so, mark as a switch and break the loop:
+    shouldSwitch = true;
+    break;
+  }
 
-
-
-
-
-
-
-
-        function sortTable(n) {
-        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("emissionTable");
+        }
+        if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
-        //Set the sorting direction to ascending:
-        dir = "asc"; 
-        /*Make a loop that will continue until
-        no switching has been done:*/
-        while (switching) {
-            //start by saying: no switching is done:
-            switching = false;
-            rows = table.rows;
-            /*Loop through all table rows (except the
-            first, which contains table headers):*/
-            for (i = 1; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
-            shouldSwitch = false;
-            /*Get the two elements you want to compare,
-            one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
-            /*check if the two rows should switch place,
-            based on the direction, asc or desc:*/
-            if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch= true;
-                break;
-                }
-            } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
-                }
-            }
-            if (Number(x.innerHTML) > Number(y.innerHTML)) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-
-            }
-            if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        //Each time a switch is done, increase this count by 1:
+        switchcount ++;      
+        } else {
+        /*If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again.*/
+        if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
             switching = true;
-            //Each time a switch is done, increase this count by 1:
-            switchcount ++;      
-            } else {
-            /*If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again.*/
-            if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
-                switching = true;
-            }
-            }
-        } //end of while(switching)
-    }//end of sortTable
-        
+        }
+        }
+    } //end of while(switching)
+}//end of sortTable
+    
 
 function buildTable(data){
     let table = document.querySelector('#emissionTableBody');
@@ -275,16 +200,6 @@ function buildTable(data){
     }
     table.innerHTML = htmlOutput;
 }
-
-
-    
-    
-    //JQuery - Ajax Function
-    //That is to say use <script src="https://code.jquery.com/jquery-3.1.1.min.js"> instead of <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-    //https://stackoverflow.com/questions/18271251/typeerror-ajax-is-not-a-function
-
-    
-
 
 </script>
 </html>
