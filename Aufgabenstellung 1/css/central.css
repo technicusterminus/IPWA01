@@ -28,3 +28,8 @@ th, td {
 th{
     cursor: pointer;
 }
+.flag-icon {
+    width: 50px; /* Breite der Flaggenbilder */
+    height: auto; /* Höhe wird automatisch an die Breite angepasst */
+    margin-left: 10px; /* Abstand zwischen den Flaggenbildern */
+}
