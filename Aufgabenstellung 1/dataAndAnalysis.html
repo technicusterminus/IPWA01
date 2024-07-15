@@ -136,33 +136,53 @@
 }
 
 function sortTable(n) {
-    var table = document.getElementById("emissionTable"), rows, switching = true, dir = "asc", switchcount = 0;
-
+    // Holt die Tabelle mit der ID "emissionTable".
+    var table = document.getElementById("emissionTable"),
+        rows,
+        switching = true,
+        dir = "asc",
+        switchcount = 0;
+    // Eine Schleife, die so lange läuft, bis keine weiteren Reihen getauscht werden müssen.
     while (switching) {
         switching = false;
-        rows = table.rows; //Anzahl Zeilen der Tabelle.
+        rows = table.rows; // Holt alle Zeilen der Tabelle.
+        // Geht durch alle Zeilen der Tabelle (außer die erste, weil das normalerweise die Kopfzeile ist).
         for (var i = 1; i < rows.length - 1; i++) {
+            // Holt die Zellen der aktuellen und der nächsten Zeile in der angegebenen Spalte.
             var x = rows[i].getElementsByTagName("TD")[n];
             var y = rows[i + 1].getElementsByTagName("TD")[n];
-            var shouldSwitch = (dir === "asc") ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase());
-            
-            if (!isNaN(x.innerHTML) && !isNaN(y.innerHTML)) {
-                shouldSwitch = (dir === "asc") ? (Number(x.innerHTML) > Number(y.innerHTML)) : (Number(x.innerHTML) < Number(y.innerHTML));
+            var shouldSwitch = false;
+            // Vergleich der Inhalte der Zellen, um zu entscheiden, ob sie vertauscht werden sollen.
+            if (dir === "asc") {
+                shouldSwitch = (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase());
+            } else {
+                shouldSwitch = (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase());
             }
-            
+
+            // Wenn die Inhalte Zahlen sind, werden sie als Zahlen verglichen.
+            if (!isNaN(x.innerHTML) && !isNaN(y.innerHTML)) {
+                if (dir === "asc") {
+                    shouldSwitch = (Number(x.innerHTML) > Number(y.innerHTML));
+                } else {
+                    shouldSwitch = (Number(x.innerHTML) < Number(y.innerHTML));
+                }
+            }
+            // Wenn entschieden wurde, dass die Reihen vertauscht werden sollen.
             if (shouldSwitch) {
+                // Vertauscht die beiden Reihen.
                 rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                 switching = true;
                 switchcount++;
                 break;
             }
         }
-        
+        // Wenn keine Reihen vertauscht wurden und die Richtung "asc" war, wird die Richtung auf "desc" geändert.
         if (switchcount === 0 && dir === "asc") {
             dir = "desc";
             switching = true;
         }
     }
 }
+
 </script>
 </html>
