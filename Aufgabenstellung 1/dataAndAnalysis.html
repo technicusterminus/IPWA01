@@ -158,15 +158,6 @@ function sortTable(n) {
             } else {
                 shouldSwitch = (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase());
             }
-
-            // Wenn die Inhalte Zahlen sind, werden sie als Zahlen verglichen.
-            if (!isNaN(x.innerHTML) && !isNaN(y.innerHTML)) {
-                if (dir === "asc") {
-                    shouldSwitch = (Number(x.innerHTML) > Number(y.innerHTML));
-                } else {
-                    shouldSwitch = (Number(x.innerHTML) < Number(y.innerHTML));
-                }
-            }
             // Wenn entschieden wurde, dass die Reihen vertauscht werden sollen.
             if (shouldSwitch) {
                 // Vertauscht die beiden Reihen.
