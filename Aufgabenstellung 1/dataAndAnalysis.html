@@ -140,7 +140,7 @@ function sortTable(n) {
 
     while (switching) {
         switching = false;
-        rows = table.rows;
+        rows = table.rows; //Anzahl Zeilen der Tabelle.
         for (var i = 1; i < rows.length - 1; i++) {
             var x = rows[i].getElementsByTagName("TD")[n];
             var y = rows[i + 1].getElementsByTagName("TD")[n];
